@@ -1,0 +1,27 @@
+<project name="WebServer" default="run" basedir=".">
+
+	<target name="run" depends="jar">
+		<java jar="sub/Program2.jar" fork="true" />
+	</target>
+
+
+	<target name="jar" depends="compile">
+		<jar destfile="sub/Program2.jar" basedir="sub">
+			<manifest>
+				<attribute name="main-class" value="WebServer"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="sub"/>
+			<javac srcdir="." destdir="sub" fork="true"/>
+	</target>
+
+
+	<target name="clean">
+		<delete dir="sub"/>
+	</target>
+
+</project>
+
